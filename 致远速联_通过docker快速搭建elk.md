@@ -17,7 +17,8 @@
 - 检查是否运行了容器：docker ps
 - 验证是否正常运行：curl http://localhost:9200
 - 是否返回一下结果：
-> { 
+```
+ { 
    "name" : "29667a6354f1", 
    "cluster_name" : "docker-cluster", 
    "clusteruuid" : "L26w6iQR0GfhMqNapQOKw", 
@@ -34,6 +35,7 @@
    }, 
    "tagline" : "You Know, for Search" 
  } 
+```
 
 注意：
 - 操作太快，会提示：curl: (52) Empty reply from server，需要等待一会
