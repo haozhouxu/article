@@ -66,10 +66,22 @@ curl: (52) Empty reply from server
 ```
 
 ## 第二步：搭建kibana
-- 拉取镜像：docker pull docker.elastic.co/kibana/kibana:7.1.1
-- 运行镜像：docker run -p 5601:5601 -d --name kibana -e ELASTICSEARCH_HOSTS=http://172.100.50.38:9200 docker.elastic.co/kibana/kibana:7.1.1 
-- 检查是否运行了容器：docker ps
-- 验证是否正常运行，通过浏览器运行：http://localhost:5601
+- 拉取镜像：
+```
+docker pull docker.elastic.co/kibana/kibana:7.1.1
+```
+- 运行镜像：
+```
+docker run -p 5601:5601 -d --name kibana -e ELASTICSEARCH_HOSTS=http://172.100.50.38:9200 -e I18N_LOCALE=zh-CN docker.elastic.co/kibana/kibana:7.1.1 
+```
+- 检查是否运行了容器：
+```
+docker ps
+```
+- 验证是否正常运行，通过浏览器运行：
+```
+http://localhost:5601
+```
 
 注意：
 - 会出现：Kibana server is not ready yet，因为访问太快。
@@ -81,8 +93,14 @@ curl: (52) Empty reply from server
 - ELASTICSEARCH_HOSTS不能修改为localhost，因为这样子是容器里面，而elasticsearch和kibana是在不同容器，所以需要制定本机ip
 
 ## 第三步：搭建logstash
-- 拉取镜像：docker pull docker.elastic.co/logstash/logstash:7.1.1
-- 新建文件夹：/usr/share/logstash/pipeline/
+- 拉取镜像：
+```
+docker pull docker.elastic.co/logstash/logstash:7.1.1
+```
+- 新建文件夹：
+```
+/usr/share/logstash/pipeline/
+```
 - 新建文件（logstash.conf）：
 ```
 input {
@@ -96,11 +114,20 @@ output {
     }
 }
 ```
-- 运行镜像：docker run --rm -it -p 5044:5044 -v /usr/share/logstash/pipeline/:/usr/share/logstash/pipeline/ docker.elastic.co/logstash/logstash:7.1.1
+- 运行镜像：
+```
+docker run --rm -it -p 5044:5044 -v /usr/share/logstash/pipeline/:/usr/share/logstash/pipeline/ docker.elastic.co/logstash/logstash:7.1.1
+```
 
 ## 第四步：搭建filebeat
-- 拉取镜像：docker pull docker.elastic.co/beats/filebeat:7.1.1
-- 新建文件夹：/usr/share/filebeat/
+- 拉取镜像：
+```
+docker pull docker.elastic.co/beats/filebeat:7.1.1
+```
+- 新建文件夹：
+```
+/usr/share/filebeat/
+```
 - 新增：配置文件filebeat.docker.yml:
 ```
 filebeat.inputs:
@@ -111,7 +138,9 @@ filebeat.inputs:
     host: "172.100.50.38:5601"
 ```
 - 运行镜像：
+```
 docker run --name=filebeat -v /var/lib/docker/containers/:/var/lib/docker/containers/:ro -v /usr/share/filebeat/filebeat.docker.yml:/usr/share/filebeat/filebeat.yml docker.elastic.co/beats/filebeat:7.1.1
+```
 
 ## 验证成果
 - 打开浏览器，输入：http://localhost:5601
