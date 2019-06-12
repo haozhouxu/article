@@ -12,11 +12,32 @@
 - 安装了docker
 
 ## 第一步：搭建elasticsearch
-- 拉取镜像，通过以下命令：docker pull docker.elastic.co/elasticsearch/elasticsearch:7.1.1
-- 运行镜像：docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -d --name elasticsearch docker.elastic.co/elasticsearch/elasticsearch:7.1.1
-- 检查是否运行了容器：docker ps
-- 验证是否正常运行：curl http://localhost:9200
+- 拉取镜像，通过以下命令：
+
+```
+docker pull docker.elastic.co/elasticsearch/elasticsearch:7.1.1
+```
+
+- 运行镜像：
+
+```
+docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -d --name elasticsearch docker.elastic.co/elasticsearch/elasticsearch:7.1.1
+```
+
+- 检查是否运行了容器：
+
+```
+docker ps
+```
+
+- 验证是否正常运行：
+
+```
+curl http://localhost:9200
+```
+
 - 是否返回一下结果：
+
 ```
  { 
    "name" : "29667a6354f1", 
@@ -38,7 +59,11 @@
 ```
 
 注意：
-- 操作太快，会提示：curl: (52) Empty reply from server，需要等待一会
+- 操作太快，会提示一下信息，需要等待一会：
+
+```
+curl: (52) Empty reply from server
+```
 
 ## 第二步：搭建kibana
 - 拉取镜像：docker pull docker.elastic.co/kibana/kibana:7.1.1
