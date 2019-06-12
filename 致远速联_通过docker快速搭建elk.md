@@ -116,7 +116,7 @@ output {
 ```
 - 运行镜像：
 ```
-docker run --rm -it -p 5044:5044 -v /usr/share/logstash/pipeline/:/usr/share/logstash/pipeline/ docker.elastic.co/logstash/logstash:7.1.1
+docker run -p 5044:5044 --name logstash -v /usr/share/logstash/pipeline/:/usr/share/logstash/pipeline/ docker.elastic.co/logstash/logstash:7.1.1
 ```
 
 ## 第四步：搭建filebeat
@@ -134,7 +134,9 @@ filebeat.inputs:
   - type: log
     paths:
       - /var/lib/docker/containers/*/*.log
-  setup.kibana:
+output.logstash:
+    hosts: ["172.100.50.38:5044"]
+setup.kibana:
     host: "172.100.50.38:5601"
 ```
 - 运行镜像：
