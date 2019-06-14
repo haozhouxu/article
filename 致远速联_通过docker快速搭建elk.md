@@ -86,22 +86,31 @@ http://localhost:5601
 注意：
 - 会出现：Kibana server is not ready yet，因为访问太快。
 - The following settings have different default values when using the Docker images:
-> server.name  kibana 
-> server.host  "0" 
-> elasticsearch.hosts  http://elasticsearch:9200 
-> xpack.monitoring.ui.container.elasticsearch.enabled  true 
+
+```
+server.name  kibana 
+server.host  "0" 
+elasticsearch.hosts  http://elasticsearch:9200 
+xpack.monitoring.ui.container.elasticsearch.enabled  true 
+```
+
 - ELASTICSEARCH_HOSTS不能修改为localhost，因为这样子是容器里面，而elasticsearch和kibana是在不同容器，所以需要制定本机ip
 
 ## 第三步：搭建logstash
 - 拉取镜像：
+
 ```
 docker pull docker.elastic.co/logstash/logstash:7.1.1
 ```
+
 - 新建文件夹：
+
 ```
 /usr/share/logstash/pipeline/
 ```
+
 - 新建文件（logstash.conf）：
+
 ```
 input {
     beats {
@@ -114,21 +123,28 @@ output {
     }
 }
 ```
+
 - 运行镜像：
+
 ```
 docker run -p 5044:5044 --name logstash -v /usr/share/logstash/pipeline/:/usr/share/logstash/pipeline/ docker.elastic.co/logstash/logstash:7.1.1
 ```
 
 ## 第四步：搭建filebeat
 - 拉取镜像：
+
 ```
 docker pull docker.elastic.co/beats/filebeat:7.1.1
 ```
+
 - 新建文件夹：
+
 ```
 /usr/share/filebeat/
 ```
+
 - 新增：配置文件filebeat.docker.yml:
+
 ```
 filebeat.inputs:
   - type: log
@@ -139,7 +155,9 @@ output.logstash:
 setup.kibana:
     host: "172.100.50.38:5601"
 ```
+
 - 运行镜像：
+
 ```
 docker run --name=filebeat -v /var/lib/docker/containers/:/var/lib/docker/containers/:ro -v /usr/share/filebeat/filebeat.docker.yml:/usr/share/filebeat/filebeat.yml docker.elastic.co/beats/filebeat:7.1.1
 ```
