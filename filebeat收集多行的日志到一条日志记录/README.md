@@ -23,5 +23,5 @@ multiline.match: after
 - 新收集的数据，则会匹配上面的规则
 
 ## 参考资料
-- (Manage multiline messages)[https://www.elastic.co/guide/en/beats/filebeat/current/multiline-examples.html]
-- (Regular expression support)[https://www.elastic.co/guide/en/beats/filebeat/current/regexp-support.html]
+- [Manage multiline messages](https://www.elastic.co/guide/en/beats/filebeat/current/multiline-examples.html)
+- [Regular expression support](https://www.elastic.co/guide/en/beats/filebeat/current/regexp-support.html)
