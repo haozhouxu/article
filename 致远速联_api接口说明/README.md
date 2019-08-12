@@ -68,3 +68,37 @@
     ]
 }
 ```
+
+## 接口：create_sp_folder
+
+### 输入参数
+| 字段名 | 字段类型 | 字段中文名 | 是否必须 | 描述 | 默认值 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| site | string | 网站名称 | 否 | | 空字符串 |
+| path | string | SharePoint文件夹的相对路径 | 是 | | |
+
+### 输入样例
+```json
+{
+    "para":{
+        "path":"Doclib8/xuhaozhou"
+    }
+}
+```
+
+### 输出参数
+| 字段名 | 字段类型 | 字段中文名 | 描述 |
+| :--- | :--- | :--- | :--- |
+| re | int | 返回码 | 0：成功，其他：失败 |
+| data | list | 解析的内容 |  |
+
+### 输出样例
+```json
+{
+    "re":0,
+    "data":{
+        "Name":"xuhaozhou",
+        "ServerRelativeUrl":"/sites/main/Doclib8/xuhaozhou"
+    }
+}
+```
