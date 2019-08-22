@@ -113,6 +113,99 @@ post
 }
 ```
 
+## 接口：get_sp_files
+
+### 请求方式
+```
+post
+```
+
+### 输入参数
+| 字段名 | 字段类型 | 字段中文名 | 是否必须 | 描述 | 默认值 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| site | string | 网站名称 | 否 | | 空字符串 |
+| file_path | string | SharePoint文件夹的相对路径 | 是 | | |
+| @pageNum | int | 页码 | 否 | | 1 |
+| @limit | int | 条数 | 否 | | 10 |
+| @sort | dict | 排序 | 否 | | |
+| search | string | 名称搜索 | 否 | | |
+| type | string | 文件类型 | 否 | | 空字符串 |
+| search_reverse | bool | 是否不包含搜索地址 | 否 | 正式环境未上线 | false |
+| is_page | bool | 是否分页 | 否 | 正式环境未上线 | true |
+
+### 输入样例
+```json
+{
+    "para":{
+        "site":"",
+        "file_path":"DocLib8/填报模板/深市上市公司/定期报告/2019SAR",
+        "type":"docx",
+        "search":"[",
+        "@sort":{
+            "Name":"asc"
+        },
+        "search_reverse":true,
+        "is_page":false
+    }
+}
+```
+
+### 输出参数
+| 字段名 | 字段类型 | 字段中文名 | 描述 |
+| :--- | :--- | :--- | :--- |
+| re | int | 返回码 | 0：成功，其他：失败 |
+| data | list | 解析的内容 |  |
+| count | int | 总条数 |  |
+| ModifiedBy | string | 修改者 |  |
+| Level | string | 状态 | 三种状态：发布，草稿，签出 |
+| Name | string | 文件名 |  |
+| ServerRelativeUrl | string | SharePoint的相对路径 |  |
+| TimeLastModified | string | 最后修改时间 |  |
+| UIVersionLabel | string | 版本号 |  |
+| GUID | string | 文件的GUID |  |
+| ver | string | 入库版本 |  |
+| usr | string | 入库人 |  |
+| update_time | string | 入库时间 |  |
+| uid | string | 入库uid |  |
+
+### 输出样例
+```json
+{
+    "re":0,
+    "data":{
+        "count":7,
+        "data":[
+            {
+                "ModifiedBy":"陈海娟",
+                "Level":"发布",
+                "Name":"发布时间+标题+文号（中国证券监督管理委员会-行政许可）.xlsx",
+                "ServerRelativeUrl":"/sites/main/DocLib/帮帮采/模板定义/发布时间+标题+文号（中国证券监督管理委员会-行政许可）.xlsx",
+                "TimeLastModified":"2019-08-22T06:07:07Z",
+                "UIVersionLabel":"1.0",
+                "GUID":"jhfkvcjme-dasf23-dfa23-fnkii83423",
+                "ver":"",
+                "usr":"",
+                "update_time":"",
+                "uid":""
+            },
+            {
+                "ModifiedBy":"陈海娟",
+                "Level":"发布",
+                "Name":"公司代码+采取监管措施日期（深圳证券交易所-监管措施）_随机数.xlsx",
+                "ServerRelativeUrl":"/sites/main/DocLib/帮帮采/模板定义/公司代码+采取监管措施日期（深圳证券交易所-监管措施）_随机数",
+                "TimeLastModified":"2019-08-22T06:07:07Z",
+                "UIVersionLabel":"1.0",
+                "GUID":"jhfkvcjme-dasf23-dfa23-fnkii83423",
+                "ver":"",
+                "usr":"",
+                "update_time":"",
+                "uid":""
+            }
+        ]
+    }
+}
+```
+
 ## 上传文件接口：http://172.100.10.62:3000/u
 
 ### 请求方式
