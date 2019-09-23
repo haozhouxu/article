@@ -305,8 +305,10 @@ post
 | re | int | 返回码 | 0：成功，其他：失败 |
 | data | json | 解析的内容 |  |
 | r | bool | 是否转换成功 |  |
-| e | string | 错误信息 |  |
-| file | string | 文件id |  |
+| e | string | 信息 |  |
+| fileID | string | 文件id |  |
+| fileFtpUrl | string | 文件url |  |
+| isSuccess | bool | 是否转换成功 |  |
 
 ### 输出样例
 ```json
@@ -314,8 +316,11 @@ post
     "re":0,
     "data":{
         "r":true,
-        "e":"",
-        "file":"aaaaa"
+        "e":{
+            "fileFtpUrl":"http://172.100.10.62:3000/d/abcdefghijklmnopqrstuvwsyz",
+            "fileID":"abcdefghijklmnopqrstuvwsyz",
+            "isSuccess":true
+        }
     }
 }
 ```
