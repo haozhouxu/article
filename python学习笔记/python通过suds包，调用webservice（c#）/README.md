@@ -8,6 +8,7 @@
 
 - 官方包：https://pypi.org/project/suds-jurko/
 - 如果报错：import client，那么先安装pip install client
+- 我使用的时候，最新版本为：suds-jurko 0.6
 - 安装命令如下：
 ```
 pip install suds-jurko
