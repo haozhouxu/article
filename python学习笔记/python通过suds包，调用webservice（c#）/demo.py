@@ -7,6 +7,7 @@ def test_suds():
     client = Client(webservice_url)
 
     # 查看service提供的方法
+    print(client)
 
     # 调用参数为string的方法
     result = client.service.GetString("demo")
