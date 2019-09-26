@@ -6,9 +6,9 @@ import pika
 
 # 有密码方式
 credit = pika.PlainCredentials("admin","admin")
-cp = pika.ConnectionParameters(host="172.100.10.202",credentials=credit)
+cp = pika.ConnectionParameters(host="localhost",credentials=credit)
 # 无密码方式
-# cp = pika.ConnectionParameters(host="172.100.10.202")
+# cp = pika.ConnectionParameters("localhost")
 
 connection = pika.BlockingConnection(cp)
 channel = connection.channel()
