@@ -383,3 +383,68 @@ post
     }
 }
 ```
+
+## 接口：upload_sp_files
+
+### 类型
+```
+action
+```
+
+### 请求方式
+```
+post
+```
+
+### 输入参数
+| 字段名 | 字段类型 | 字段中文名 | 是否必须 | 描述 | 默认值 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| file_id_list | list | 文件id列表 | 是 | 上传到文件服务器的文件id | |
+| site | string | sharepoint站点 | 是 | 新版的SharePoint，请使用空字符串 | |
+| folder | string | SharePoint文件夹 | 是 | SharePoint文件夹的相对路径 | |
+| comment | string | 注释 | 否 | 提交文件使用的迁入注释；如果没有填写，新增文件注释为：新增；更新文件注释为：更新 | |
+
+### 输入样例
+```json
+{
+    "para":{
+        "file_id_list":[
+            "123",
+            "456",
+            "789"
+        ],
+        "site":"",
+        "folder":"DocLib8/报告模板/IPS/Tuple模板",
+        "comment":"新增文件"
+    }
+}
+```
+
+### 输出参数
+| 字段名 | 字段类型 | 字段中文名 | 描述 |
+| :--- | :--- | :--- | :--- |
+| re | int | 返回码 | 0：成功，其他：失败 |
+| data | json | 解析的内容 |  |
+| file_id | string | 文件id |  |
+| result | bool | 是否上传成功 |  |
+
+### 输出样例
+```json
+{
+    "re":0,
+    "data":[
+        {
+            "file_id":"123",
+            "result":true
+        },
+        {
+            "file_id":"456",
+            "result":true
+        },
+        {
+            "file_id":"789",
+            "result":true
+        }
+    ]
+}
+```
