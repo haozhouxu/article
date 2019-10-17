@@ -46,3 +46,11 @@
 - shadowsocks
 - 官网：https://shadowsocks.org/en/index.html
 - 下载链接：https://github.com/shadowsocks/shadowsocks-windows/releases
+
+## U盘系统制作工具
+- rufus
+- 官网：http://rufus.ie/
+- 下载链接：http://rufus.ie/
+- 介绍：[还用不靠谱的Ghost？一款真正良心的装系统神器 - cnbeta](https://www.cnbeta.com/articles/it/900003.htm)
+
+![rufus](images/7.png)
