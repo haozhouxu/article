@@ -448,3 +448,74 @@ post
     ]
 }
 ```
+
+## 接口：get_sp_file_version
+
+### 说明
+用于获取SharePoint指定文件的历史版本信息（可以选择是否包含当前版本信息，默认包含）
+
+### 类型
+```
+action
+```
+
+### 请求方式
+```
+post
+```
+
+### 输入参数
+| 字段名 | 字段类型 | 字段中文名 | 是否必须 | 描述 | 默认值 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| file_path | string | SharePoint文件夹的相对路径 | 是 | | |
+| contain | bool | 是否包含当前版本信息 | 否 | true | |
+
+### 输入样例
+```json
+{
+    "para":{
+        "file_path":"/sites/main/DocLib8/填报模板/深市上市公司/定期报告/2019SAR[b]_MAIN_ZQ.docx"
+    }
+}
+```
+
+### 输出参数
+| 字段名 | 字段类型 | 字段中文名 | 描述 |
+| :--- | :--- | :--- | :--- |
+| re | int | 返回码 | 0：成功，其他：失败 |
+| data | json | 解析的内容 |  |
+| UIVersionLabel | string | 版本号 |  |
+| Created | string | 创建时间 |  |
+| CreatedBy | string | 修改者 |  |
+| CheckInComment | string | 注释 |  |
+| IsCurrentVersion | bool | 是否当前版本 |  |
+
+### 输出样例
+```json
+{
+    "re":0,
+    "data":[
+        {
+            "UIVersionLabel":"5.0",
+            "Created":"2019-07-05T12:45:23Z",
+            "CreatedBy":"童程伟",
+            "CheckInComment":"",
+            "IsCurrentVersion":true
+        },
+        {
+            "UIVersionLabel":"4.0",
+            "Created":"2019-07-05T12:45:23Z",
+            "CreatedBy":"童程伟",
+            "CheckInComment":"",
+            "IsCurrentVersion":false
+        },
+        {
+            "UIVersionLabel":"3.0",
+            "Created":"2019-07-05T12:45:23Z",
+            "CreatedBy":"童程伟",
+            "CheckInComment":"",
+            "IsCurrentVersion":false
+        }
+    ]
+}
+```
