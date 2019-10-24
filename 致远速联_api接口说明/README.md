@@ -475,7 +475,7 @@ post
 ```json
 {
     "para":{
-        "file_path":"/sites/main/DocLib8/填报模板/深市上市公司/定期报告/2019SAR[b]_MAIN_ZQ.docx"
+        "file_path":"/sites/main/DocLib8/填报模板/深市上市公司/定期报告/2019SAR/2019SAR[b]_MAIN_ZQ.docx"
     }
 }
 ```
