@@ -469,7 +469,7 @@ post
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | file_path | string | SharePoint文件夹的相对路径 | 是 | | |
 | site | string | 站点 | 否 | | 空字符串 |
-| contain | bool | 是否包含当前版本信息 | 否 | true | |
+| contain | bool | 是否包含当前版本信息 | 否 | | true |
 
 ### 输入样例
 ```json
